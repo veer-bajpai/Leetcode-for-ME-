@@ -1,7 +1,6 @@
 class Solution(object):
     def findDuplicate(self, nums):
-        slow, fast = 0, 0
-        check = 0
+        slow, fast = nums[0], nums[0]
      
         while True:
             slow = nums[slow]
@@ -9,10 +8,9 @@ class Solution(object):
             if slow == fast:
                 break
 
-        while True:
-            slow = nums[slow]
-            check = nums[check]
-            if slow == check:
-                break
-                
-        return check
+        slow = nums[0]
+        while slow != fast:
+             slow = nums[slow]
+             fast = nums[fast]
+
+        return fast    
